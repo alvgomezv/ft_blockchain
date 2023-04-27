@@ -1,0 +1,17 @@
+#!/goinfre/alvgomez/miniconda3/envs/42cyber-alvgomez/bin/python
+
+import time
+import hashlib
+import json
+from flask import Flask, jsonify
+
+block = {
+    'index': 4,
+    'timestamp': 1644045050.00042,
+    'transactions': [{
+        'sender': '4c6e7e2a9f2f7f7ff8e7d3d6c8b7c6e8e23a7',
+        'recipient': 'b3c6e7e2a9f2f7f7ff8e7d3d6c8b7c6e8e23a7',
+        'amount': 42}],
+    'proof': 324984774000,
+    'previous_hash':'084c799cd551dd1d8d5c5f9a5d593b2e931f5e36122ee5c793c1d08a19839cc0',
+}
