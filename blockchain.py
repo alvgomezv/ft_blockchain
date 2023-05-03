@@ -45,7 +45,7 @@ class Blockchain:
             'proof': proof,
             'previous_hash':previous_hash
         }
-        self.transactions = []
+        self.transaction = []
         self.chain.append(block)
         return block
     
@@ -53,8 +53,8 @@ class Blockchain:
         transaction = ({"sender":sender,
                         "recipient":recipient,
                         "amount":amount})
-        self.transaction.append(transaction)
-        self.all_transaction.append(transaction)
+        self.transactions.append(transaction)
+        self.all_transactions.append(transaction)
         previous_block = self.get_previous_block()
         return previous_block['index']+1
 

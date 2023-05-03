@@ -1,16 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>ft_blockchain</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <style>
+        body {
+          font-family: sans-serif;
+          margin: 0;
+        }
+        
+        form {
+          width: 300px;
+          margin: 0 auto;
+          padding: 10px;
+          border: 1px solid #ccc;
+        }
+        
+        input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+        }
+
+        button {
+          background-color: #000;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          cursor: pointer;
+        }
+        header {
+            text-align: center;
+        }
+
+        code {
+            text-align: center;
+            }
+
+        ul {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+      </style>
 </head>
 <body>
     <div>
         {% block content%}
-        <h1>Home Page</h1>
-        <p>Hello {{name}}!!</p>
+        <header>
+            <h1>ft_blockchain</h1>
+            <p>Welcome to Alvaro's blockchain</p>
+            <button type="button" class="btn btn-primary" 
+                    onclick="window.location.href='/chain'">
+                    Chain
+            </button>
+            <button type="button" class="btn btn-primary" 
+                    onclick="window.location.href='/transaction/new'">
+                    New transaction
+            </button>
+            <button type="button" class="btn btn-primary" 
+                    onclick="window.location.href='/mine'">
+                    Mine
+            </button>
+        </header>
         {% endblock %}
     </div>
 </body>

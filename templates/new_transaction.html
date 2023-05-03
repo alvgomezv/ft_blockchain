@@ -1,0 +1,41 @@
+{% extends "index.html"%}
+{% block content%}
+<header>
+    <h1>ft_blockchain</h1>
+</header>
+<form method="POST">
+    <input type="text" name="sender" placeholder="Sender">
+    <input type="text" name="recipient" placeholder="Recipient">
+    <input type="number" name="amount" placeholder="Amount">
+    <button type="submit">Submit</button>
+</form>
+<code>
+    {% with messages = get_flashed_messages(with_categories=true)%}
+    {% if messages %}
+        {% for category, message in messages %}
+        {% if category == "error" %}
+        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </code>
+    <p>
+        <button type="button" class="btn btn-primary" 
+                onclick="window.location.href='/'">
+                Back to menu
+        </button>
+    </p>
+{% endblock %}
