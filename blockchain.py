@@ -45,7 +45,7 @@ class Blockchain:
             'proof': proof,
             'previous_hash':previous_hash
         }
-        self.transaction = []
+        self.transactions = []
         self.chain.append(block)
         return block
     

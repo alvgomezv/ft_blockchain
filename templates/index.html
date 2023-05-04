@@ -7,30 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-          font-family: sans-serif;
-          margin: 0;
+            font-family: sans-serif;
+            margin: 0;
         }
         
         form {
-          width: 300px;
-          margin: 0 auto;
-          padding: 10px;
-          border: 1px solid #ccc;
+            width: 300px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
         }
         
         input {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid #ccc;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
         }
 
         button {
-          background-color: #000;
-          color: #fff;
-          padding: 10px;
-          border: none;
-          cursor: pointer;
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
         }
+
+        .centered-button {
+            background-color: #fff;
+            color: #000;
+            padding: 8px;
+            border: solid;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto 0;
+        }
+
         header {
             text-align: center;
         }
@@ -54,18 +65,22 @@
         <header>
             <h1>ft_blockchain</h1>
             <p>Welcome to Alvaro's blockchain</p>
-            <button type="button" class="btn btn-primary" 
-                    onclick="window.location.href='/chain'">
-                    Chain
-            </button>
-            <button type="button" class="btn btn-primary" 
-                    onclick="window.location.href='/transaction/new'">
-                    New transaction
-            </button>
-            <button type="button" class="btn btn-primary" 
-                    onclick="window.location.href='/mine'">
-                    Mine
-            </button>
+                <button type="button" class="btn btn-primary" 
+                        onclick="window.location.href='/chain'">
+                        Chain
+                </button>
+                <button type="button" class="btn btn-primary" 
+                        onclick="window.location.href='/transaction/new'">
+                        New transaction
+                </button>
+                <button type="button" class="btn btn-primary" 
+                        onclick="window.location.href='/mine'">
+                        Mine
+                </button>
+                <button type="button" class="btn btn-primary centered-button" 
+                        onclick="window.location.href='/is_valid'">
+                        Validate chain
+                </button>
         </header>
         {% endblock %}
     </div>
