@@ -4,7 +4,15 @@
     <title>ft_blockchain</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         body {
             font-family: sans-serif;
@@ -57,6 +65,32 @@
         p {
             text-align: center;
         }
+
+        h2 {
+            text-align: center;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            width: 350px;
+            margin: 0 auto;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            width: 350px;
+            margin: 0 auto;
+        }
+
+
+        .close {
+            background-color: #000;
+            border: none;
+        }
+
       </style>
 </head>
 <body>
@@ -78,8 +112,12 @@
                         Mine
                 </button>
                 <button type="button" class="btn btn-primary centered-button" 
-                        onclick="window.location.href='/is_valid'">
-                        Validate chain
+                        onclick="window.location.href='/connect_node'">
+                        Connect node
+                </button>
+                <button type="button" class="btn btn-primary centered-button" 
+                        onclick="window.location.href='/replace_chain'">
+                        Replace chain
                 </button>
         </header>
         {% endblock %}

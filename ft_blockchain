@@ -12,9 +12,8 @@ from blockchain import Blockchain
     
 app = Flask(__name__)
 blockchain = Blockchain()
-
-#We generate a unique random address for the node
-#node_address = str(uuid4()).replace('-', '')
+name_blockchain = "Alvaro"
+port_blockchain = 8000
 
 app.secret_key = os.urandom(32)
 
@@ -24,7 +23,7 @@ def mine():
     previous_proof = previous_block['proof']
     proof = blockchain.proof_of_work(previous_proof)
     previous_hash = blockchain.hash(previous_block)
-    blockchain.add_transaction(sender="System reward", recipient="Alvaro", amount=1)
+    blockchain.add_transaction(sender="System reward", recipient=name_blockchain, amount=1)
     block = blockchain.create_block(proof, previous_hash)
     response = {"message":"Blocked mined!!", 
                 "index":block['index'], 
@@ -61,22 +60,20 @@ def new_transaction():
             flash("Missing elements", category="error")
         else:
             index = blockchain.add_transaction(sender, recipient, amount)
-            flash(f"Transaction added at block {index}", category="success")
+            flash(f"Transaction added to block {index}", category="success")
     return render_template("new_transaction.html")
 
-'''
 
-@app.route("/connect_node", methods=['POST'])
+@app.route("/connect_node", methods=['GET','POST'])
 def connect_node():
-    json = request.get_json()
-    nodes = json.get('nodes')
-    if nodes is None:
-        return "No node", 401
-    for node in nodes:
-        blockchain.add_node(node)
-    response = {"message":"All nodes are connected",
-                "total_nodes":list(blockchain.nodes)}
-    return jsonify(response), 201
+    if request.method == 'POST':
+        node = request.form.get('node')
+        if not node:
+            flash("Missing elements", category="error")
+        else:
+            blockchain.add_node(node)
+            flash(f"Node added, total nodes: {list(blockchain.nodes)}", category="success")
+    return render_template("connect_node.html")
 
 @app.route("/replace_chain")
 def replace_chain():
@@ -90,11 +87,10 @@ def replace_chain():
                     "actual_chain":blockchain.chain}
         return jsonify(response), 200
 
-'''
 
 @app.route("/")
 def home():
-    return render_template("index.html", name="Alvaro")
+    return render_template("index.html", name=name_blockchain)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=port_blockchain)

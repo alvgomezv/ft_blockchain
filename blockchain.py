@@ -10,32 +10,33 @@ class Blockchain:
     def __init__(self):
         self.chain = []
         self.transactions = []
-        self.all_transactions = []
         self.create_block(proof=1, previous_hash='0')
-        #self.nodes = set()
+        self.nodes = set()
 
-    '''
     def add_node(self, address):
-        url = urlparse(address)
-        self.nodes.add(url.netloc)
+        self.nodes.add(address)
 
     def replace_chain(self):
         network = self.nodes
         longest_chain = None
         max_length = len(self.chain)
         for node in network:
-            response = requests.get(f"http://{node}/get_chain")
-            if response.startus_code == 200:
-                length = response.json(['lenght'])
-                chain = response.json(['chain'])
-                if length > max_length and self.is_chain_valid(chain):
-                    max_length = length
-                    longest_chain = chain
-        if longest_chain is not None:
-            self.chain = longest_chain
-            return True
+            try:
+                response = requests.get(f"http://127.0.0.1:{node}/chain")
+                if response.status_code == 200:
+                    response = response.json()
+                    length = response['length']
+                    chain = response['chain']
+                    if length > max_length and self.is_chain_valid(chain):
+                        max_length = length
+                        longest_chain = chain
+                    if longest_chain is not None:
+                        self.chain = longest_chain
+                        return True
+            except:
+                pass
         return False
-    '''
+
 
     def create_block(self, proof, previous_hash):
         block = {
@@ -54,7 +55,6 @@ class Blockchain:
                         "recipient":recipient,
                         "amount":amount})
         self.transactions.append(transaction)
-        self.all_transactions.append(transaction)
         previous_block = self.get_previous_block()
         return previous_block['index']+1
 
